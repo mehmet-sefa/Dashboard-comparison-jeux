@@ -1,0 +1,696 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2021.3">
+  <Nodes>
+    <Node ToolID="52">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="138" y="6" width="864" height="48" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>ANALYSE DE JEU SUR DIFFERENTES PLATEFORMES</Text>
+          <Font name="Arial" size="24" style="0" />
+          <TextColor name="Black" />
+          <FillColor r="169" g="167" b="167" />
+          <Shape shape="0" />
+          <Justification Justification="1" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="53">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="138" y="66" width="348" height="120" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>Le but de cette analyse est de determiné grace à des jeux de données, les plateformes servant à télécharger le plus de jeux différents, mais aussi découvrir grâce à cette analyse les genres les plus populaires pour ces plateformes.</Text>
+          <Font name="Arial" size="12" style="0" />
+          <TextColor name="Black" />
+          <FillColor r="255" g="176" b="179" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="56">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="570" y="66" width="432" height="120" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>Les jeux de données proviennent du site kaggle.com.
+Le premier jeu de données représentent les données d'enregistrelent sur les consoles.
+Le second jeu de données décrit les données d'enregistrement sur les appareils Mobiles Android.</Text>
+          <Font name="Arial" size="12" style="0" />
+          <TextColor name="Black" />
+          <FillColor r="255" g="176" b="179" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="51">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="1133" y="653" width="417" height="330" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Conteneur 51</Caption>
+          <Style TextColor="#314c4a" FillColor="#7dffce" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="23">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+            <Position x="1158" y="702" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <AutoResetMode>Custom</AutoResetMode>
+              <MultiMetaInfo>
+                <MetaInfo name="#2">
+                  <RecordInfo>
+                    <Field name="Name" size="254" source="Formula: [_CurrentField_]" type="V_String" column="1" />
+                    <Field name="Genre" size="254" source="Formula: [_CurrentField_]" type="V_String" column="2" />
+                    <Field name="Global_Sales" source="Formula: [Global_Sales] * 1000000&#xA; (BatchMacro) (BatchMacro) (BatchMacro)" type="Float" column="3" />
+                    <Field name="Platform" size="254" source="Formula: [_CurrentField_]" type="V_String" column="4" />
+                  </RecordInfo>
+                </MetaInfo>
+                <MetaInfo name="#1">
+                  <RecordInfo>
+                    <Field name="App" size="254" source="Formula: [_CurrentField_]" type="V_String" column="1" />
+                    <Field name="Genres" size="254" source="Formula: [_CurrentField_]" type="V_String" column="2" />
+                    <Field name="Installs" source="Formula: Replace([Installs], &quot;,&quot;, &quot;&quot;) (BatchMacro) (BatchMacro) (BatchMacro)" type="Double" column="3" />
+                    <Field name="Category" size="254" source="Formula: [_CurrentField_]" type="V_String" column="4" />
+                  </RecordInfo>
+                </MetaInfo>
+              </MultiMetaInfo>
+              <ByName_ErrorMode>Warning</ByName_ErrorMode>
+              <ByName_OutputMode>Subset</ByName_OutputMode>
+              <Mode>ManualDelayed</Mode>
+              <SetOutputOrder value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>On réalise l'union entre les deux bass de données.
+Les noms seront stocker sur une colonne, le genre dans une autre, esuite les installations et pour finir on aura la catégorie dans laquelle le jeu aparaît.</AnnotationText>
+              <DefaultAnnotationText>On réalise l'union entre les deux bass de données.
+Les noms seront stocker sur une colonne, le genre dans une autre, esuite les installations et pour finir on aura la catégorie dans laquelle le jeu aparaît.</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+        </Node>
+        <Node ToolID="32">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Unique.Unique">
+            <Position x="1290" y="702" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <UniqueFields>
+                <Field field="App" />
+                <Field field="Genres" />
+                <Field field="Installs" />
+                <Field field="Category" />
+              </UniqueFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[On simplifie la table en effacant tout les doublons qui s'y trouvent.
+]]></AnnotationText>
+              <DefaultAnnotationText><![CDATA[On simplifie la table en effacant tout les doublons qui s'y trouvent.]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnique" />
+        </Node>
+        <Node ToolID="31">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1422" y="702" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\mehme\Desktop\telechargement.csv</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>;</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>65001</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>telechargement.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="43">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="125" y="749" width="768" height="511" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Extraction des donées d'enregistrement Mobile</Caption>
+          <Style TextColor="#314c4a" FillColor="#853a3a" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="45">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="258" y="798" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Operator>=</Operator>
+                <Field>Category</Field>
+                <Operands>
+                  <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+                  <DateType>fixed</DateType>
+                  <PeriodDate>2021-10-04 21:55:52</PeriodDate>
+                  <PeriodType>
+                  </PeriodType>
+                  <PeriodCount>0</PeriodCount>
+                  <Operand>GAME</Operand>
+                  <StartDate>2021-10-04 21:55:52</StartDate>
+                  <EndDate>2021-10-04 21:55:52</EndDate>
+                </Operands>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>[Category] = "GAME"
+
+Dans cette base de données se trouve un ensemble d'application qui n'est pas forcement un Jeu. Pour nous permettre d'obtenir uniquement les lignes qui représente une application de type "Jeu"</AnnotationText>
+              <DefaultAnnotationText>[Category] = "GAME"</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="46">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="390" y="798" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="TrimRight([Installs],&quot;+&quot;)&#xA;" field="Installs" size="254" type="V_String" />
+                <FormulaField expression="Replace([Category], &quot;GAME&quot;, &quot;Mobile&quot;)" field="Category" size="254" type="V_String" />
+                <FormulaField expression="Replace([Installs], &quot;,&quot;, &quot;&quot;)" field="Installs" size="254" type="V_String" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Installs = TrimRight([Installs],"+")
+
+Category = Replace([Category], "GAME", "Mo...
+
+Le nombre d'installation est représenté par un "+...", pour le transformer en chiffre nous supprimons ce "+".
+Nous changons la variable "GAME" en "Mobile" pour ne pas porter à confusion sur la suite lors de l'union des données.</AnnotationText>
+              <DefaultAnnotationText>Installs = TrimRight([Installs],"+")
+
+Category = Replace([Category], "GAME", "Mo...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="47">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="150" y="798" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="12000" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>googleplaystore.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="App" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Category" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Rating" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Reviews" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Size" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Installs" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Type" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Price" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Content Rating" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Genres" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Last Updated" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Current Ver" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+                <Field name="Android Ver" size="254" source="File: C:\Users\mehme\Downloads\googleplaystore.csv\googleplaystore.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="48">
+          <GuiSettings>
+            <Position x="762" y="798" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="Check Box (135)">False</Value>
+              <Value name="Check Box (136)">False</Value>
+              <Value name="List Box (11)">"App","Category","Installs","Genres"</Value>
+              <Value name="Check Box (84)">True</Value>
+              <Value name="Check Box (117)">True</Value>
+              <Value name="Check Box (15)">True</Value>
+              <Value name="Check Box (109)">False</Value>
+              <Value name="Check Box (122)">False</Value>
+              <Value name="Check Box (53)">False</Value>
+              <Value name="Check Box (58)">False</Value>
+              <Value name="Check Box (70)">False</Value>
+              <Value name="Check Box (77)">False</Value>
+              <Value name="Drop Down (81)">upper</Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>On nettoie les données pour ne pas laisser passer les variables vides ou nulles.</AnnotationText>
+              <DefaultAnnotationText>On nettoie les données pour ne pas laisser passer les variables vides ou nulles.</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings Macro="Cleanse.yxmc" />
+        </Node>
+        <Node ToolID="49">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="510" y="798" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="App" selected="True" />
+                <SelectField field="Category" selected="True" />
+                <SelectField field="Installs" selected="True" type="Double" size="8" />
+                <SelectField field="Genres" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Changement de la variable installation que nous modifions en "double" pour permettre l'utilisation prochainement.</AnnotationText>
+              <DefaultAnnotationText>Changement de la variable installation que nous modifions en "double" pour permettre l'utilisation prochainement.</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="50">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="630" y="798" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Operator>&gt;=</Operator>
+                <Field>Installs</Field>
+                <Operands>
+                  <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+                  <DateType>fixed</DateType>
+                  <PeriodDate>2021-10-07 08:01:02</PeriodDate>
+                  <PeriodType>
+                  </PeriodType>
+                  <PeriodCount>0</PeriodCount>
+                  <Operand>1000000</Operand>
+                  <StartDate>2021-10-07 08:01:02</StartDate>
+                  <EndDate>2021-10-07 08:01:02</EndDate>
+                </Operands>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>[Installs] &gt;= 1000000
+
+Comme pour la base de données des Jeux consoles, pour rendre la base plus lisible on se permets de sélectionner les lignes où le nombre d'enregistrement est supérieur à 1 million.</AnnotationText>
+              <DefaultAnnotationText>[Installs] &gt;= 1000000</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="34">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="125" y="317" width="768" height="391" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Extraction des données d'enrgestriment sur les consoles</Caption>
+          <Style TextColor="#314c4a" FillColor="#2f6a9b" BorderColor="#314c4a" Transparency="31" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="35">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="149" y="366" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText>vgsales.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Rank" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="Name" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="Platform" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="Year" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="Genre" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="Publisher" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="NA_Sales" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="EU_Sales" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="JP_Sales" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="Other_Sales" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+                <Field name="Global_Sales" size="254" source="File: C:\Users\mehme\Downloads\vgsales.csv\vgsales.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="37">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="258" y="366" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="Replace([Global_Sales],&quot;.&quot;,&quot;.&quot;)" field="Global_Sales" size="254" type="V_String" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Global_Sales = Replace([Global_Sales],".",".")
+
+Nous allons chercher dans la Table les informations globales sales.
+Avec ce processus nous allons pouvoir changer ces valeurs qui sont initialement des String en Nombre décimal.
+]]></AnnotationText>
+              <DefaultAnnotationText><![CDATA[Global_Sales = Replace([Global_Sales],".",".")
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="38">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="498" y="366" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="[Global_Sales] * 1000000&#xA;" field="Global_Sales" size="4" type="Float" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Global_Sales = [Global_Sales] * 1000000
+
+
+Formule qui nous permets de transformer la variable Globale_Sales décimal qui doit initialement représenter le nombre de téléchargement en une valeur en Million.
+]]></AnnotationText>
+              <DefaultAnnotationText><![CDATA[Global_Sales = [Global_Sales] * 1000000
+
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="39">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="378" y="366" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Name" selected="True" />
+                <SelectField field="Platform" selected="True" />
+                <SelectField field="Genre" selected="True" />
+                <SelectField field="Global_Sales" selected="True" type="Float" size="4" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Transformation de la variable Globale_Sales qui doit etre un Nombre pour pouvoir etre utiliser et géré.</AnnotationText>
+              <DefaultAnnotationText>Transformation de la variable Globale_Sales qui doit etre un Nombre pour pouvoir etre utiliser et géré</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="41">
+          <GuiSettings>
+            <Position x="762" y="366" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="Check Box (135)">False</Value>
+              <Value name="Check Box (136)">False</Value>
+              <Value name="List Box (11)">"Name","Platform","Genre","Global_Sales"</Value>
+              <Value name="Check Box (84)">True</Value>
+              <Value name="Check Box (117)">True</Value>
+              <Value name="Check Box (15)">True</Value>
+              <Value name="Check Box (109)">False</Value>
+              <Value name="Check Box (122)">False</Value>
+              <Value name="Check Box (53)">False</Value>
+              <Value name="Check Box (58)">False</Value>
+              <Value name="Check Box (70)">False</Value>
+              <Value name="Check Box (77)">False</Value>
+              <Value name="Drop Down (81)">upper</Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>On nettoie les données pour ne pas laisser passer les variables vides ou nulles.</AnnotationText>
+              <DefaultAnnotationText>On noettoie les données pour ne pas laisser passer les variables vides ou nulles.</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings Macro="Cleanse.yxmc" />
+        </Node>
+        <Node ToolID="42">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="618" y="366" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Operator>&gt;=</Operator>
+                <Field>Global_Sales</Field>
+                <Operands>
+                  <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+                  <DateType>fixed</DateType>
+                  <PeriodDate>2021-10-07 07:59:53</PeriodDate>
+                  <PeriodType>
+                  </PeriodType>
+                  <PeriodCount>0</PeriodCount>
+                  <Operand>1000000</Operand>
+                  <StartDate>2021-10-07 07:59:53</StartDate>
+                  <EndDate>2021-10-07 07:59:53</EndDate>
+                </Operands>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>[Global_Sales] &gt;= 1000000
+
+Pour rendre la base plus lisible on se permets de sélectionner les lignes où le nombre d'enregistrement est supérieur à 1 million.</AnnotationText>
+              <DefaultAnnotationText>[Global_Sales] &gt;= 1000000</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="23" Connection="Output" />
+      <Destination ToolID="32" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="32" Connection="Unique" />
+      <Destination ToolID="31" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="45" Connection="True" />
+      <Destination ToolID="46" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="46" Connection="Output" />
+      <Destination ToolID="49" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="47" Connection="Output" />
+      <Destination ToolID="45" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="48" Connection="Output26" />
+      <Destination ToolID="23" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="41" Connection="Output26" />
+      <Destination ToolID="23" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="49" Connection="Output" />
+      <Destination ToolID="50" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="50" Connection="True" />
+      <Destination ToolID="48" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="35" Connection="Output" />
+      <Destination ToolID="37" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="37" Connection="Output" />
+      <Destination ToolID="39" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="38" Connection="Output" />
+      <Destination ToolID="42" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="39" Connection="Output" />
+      <Destination ToolID="38" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="42" Connection="True" />
+      <Destination ToolID="41" Connection="Input2" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Nouveau workflow1</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="75ebca00-2f16-4cf1-a56b-269d40a336a1" />
+      <Telemetry>
+        <PreviousWorkflowId value="4d83db7c-c050-40a7-8517-41757d93c7ea" />
+        <OriginWorkflowId value="4d83db7c-c050-40a7-8517-41757d93c7ea" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
